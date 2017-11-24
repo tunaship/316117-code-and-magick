@@ -16,12 +16,8 @@ window.renderStatistics = function (ctx, names, times) {
   var lineHeight = 10;
 
   for (var i = 0; i < times.length; i++) {
-    var barColor;
-    if (names[i] === 'Вы') {
-      barColor = 'rgba(255, 0, 0, 1)';
-    } else {
-      barColor = getRandomColorString();
-    }
+    var barColor = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : getRandomColorString();
+
     drawBar(ctx, initialX + indent * i + barWidth * i,
         InitialY - (times[i] * step), barWidth, times[i] * step,
         barColor);
@@ -30,6 +26,7 @@ window.renderStatistics = function (ctx, names, times) {
     fillText(ctx, names[i], initialX + indent * i + barWidth * i, InitialY + lineHeight * 2,
         '#000', '16px', 'PT Mono');
   }
+
 };
 
 function getMax(arr) {
