@@ -181,34 +181,53 @@
   </div>
 </template>
 
+<template id="similar-wizard-template2" style="display: none">
+  <p class="setup-similar-label">Петр Петров</p>
+  <div class="setup-similar-item">
+    <div class="setup-similar-content">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 86" class="setup-similar-wizard">
+        <g class="wizard">
+          <use xlink:href="#wizard-coat" class="wizard-coat"></use>
+          <use xlink:href="#wizard-head" class="wizard-head"></use>
+          <use xlink:href="#wizard-eyes" class="wizard-eyes"></use>
+          <use xlink:href="#wizard-hands" class="wizard-hands"></use>
+        </g>
+      </svg>
+    </div>
+  </div>
+</template>
+
+
 <script>
     var fireballSize = 22;
-    
-    var getFireballSpeed = function(left) 
-    { 
+
+    var getFireballSpeed = function(left)
+    {
         return (left === true) ? 5 : 2;
     }
-    
+
     var wizardSpeed = 3;
     var wizardWidth = 70;
-    
+
     var getWizardHeight = function()
-    { 
+    {
         return 1.337 * wizardWidth;
     }
-    
-    function getWizardX(width) 
+
+    function getWizardX(width)
     {
         return (width - wizardWidth)/2;
     }
-    
-    function getWizardY(height) 
+
+    function getWizardY(height)
     {
         return (1/3 * height - getWizardHeight());
     }
-            
-</script>    
+
+</script>
+<script src="js/setup.js"></script>
 <script src="js/game.js"></script>
+
 
 </body>
 </html>
