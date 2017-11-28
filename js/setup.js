@@ -21,7 +21,8 @@ function generateWizardData() {
     wizard.coatColor = getRandomElement(COAT_COLORS);
     wizard.eyesColor = getRandomElement(EYES_COLORS);
     wizardArr[i] = wizard;
-  } return wizardArr;
+  }
+  return wizardArr;
 }
 
 function renderWizard(wizard, templateElement) {
