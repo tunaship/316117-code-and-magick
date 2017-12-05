@@ -59,9 +59,9 @@ var wizardEyes = setup.querySelector('.wizard-eyes');
 var wizardCoat = setup.querySelector('.wizard-coat');
 var fireBall = setup.querySelector('.setup-fireball-wrap');
 
-function changeWizardElementColor(wizardElemClass, arr) {
+var changeWizardElementColor = function (wizardElemClass, arr) {
   wizardElemClass.style.fill = getRandomElement(arr);
-}
+};
 
 wizardCoat.addEventListener('click', function () {
   changeWizardElementColor(wizardCoat, COAT_COLORS);
@@ -75,23 +75,15 @@ fireBall.addEventListener('click', function () {
   fireBall.style.background = getRandomElement(FIREBALL_COLORS);
 });
 
-function openPopup() {
+var openPopup = function () {
   setup.classList.remove('hidden');
-  document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ESC_KEYCODE) {
-      processKeyDown(evt);
-    }
-  });
-}
+  document.addEventListener('keydown', processKeyDown);
+};
 
-function closePopup() {
+var closePopup = function () {
   setup.classList.add('hidden');
-  document.removeEventListener('keydown', function (evt) {
-    if (evt.keyCode === ESC_KEYCODE) {
-      processKeyDown(evt);
-    }
-  });
-}
+  document.removeEventListener('keydown', processKeyDown);
+};
 
 setupOpen.addEventListener('click', function () {
   openPopup();
@@ -113,9 +105,10 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
-
-function processKeyDown(evt) {
-  if (evt.target !== wizardNameInput) {
-    closePopup();
+var processKeyDown = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    if (evt.target !== wizardNameInput) {
+      closePopup();
+    }
   }
-}
+};
