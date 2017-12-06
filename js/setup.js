@@ -1,8 +1,5 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
-
 function getRandomElement(arr) {
   var rand = Math.floor(Math.random() * arr.length);
   return arr[rand];
@@ -12,6 +9,9 @@ var FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'К�
 var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
 function generateWizardData() {
   var wizardArr = [];
@@ -49,3 +49,67 @@ renderWizardBlock(similarListElement, wizardsList, renderWizard, similarWizardTe
 
 document.querySelector('.setup-similar').classList.remove('hidden');
 
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+
+
+var wizardNameInput = document.querySelector('.setup-user-name');
+var wizardEyes = setup.querySelector('.wizard-eyes');
+var wizardCoat = setup.querySelector('.wizard-coat');
+var fireBall = setup.querySelector('.setup-fireball-wrap');
+
+function changeWizardElementColor(wizardElemClass, arr) {
+  wizardElemClass.style.fill = getRandomElement(arr);
+}
+
+wizardCoat.addEventListener('click', function () {
+  changeWizardElementColor(wizardCoat, COAT_COLORS);
+});
+
+wizardEyes.addEventListener('click', function () {
+  changeWizardElementColor(wizardEyes, EYES_COLORS);
+});
+
+fireBall.addEventListener('click', function () {
+  fireBall.style.background = getRandomElement(FIREBALL_COLORS);
+});
+
+function openPopup() {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onEscPress);
+}
+
+function closePopup() {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onEscPress);
+}
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+function onEscPress(evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    if (evt.target !== wizardNameInput) {
+      closePopup();
+    }
+  }
+}
