@@ -15,10 +15,6 @@
         action();
       }
     },
-    getRandomElement: function (arr) {
-      var rand = Math.floor(Math.random() * arr.length);
-      return arr[rand];
-    },
     getMax: function (arr) {
       var max = 0;
       for (var i = 0; i < arr.length; i++) {
@@ -29,7 +25,7 @@
       return max;
     },
     getRandom: function (min, max) {
-      return Math.random() * (max - min) + min;
+      return Math.floor(Math.random() * (max - min) + min);
     }
   };
 })();

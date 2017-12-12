@@ -20,9 +20,10 @@
     var wizardArr = [];
     for (var i = 0; i < 4; i++) {
       var wizard = {};
-      wizard.name = window.util.getRandomElement(FIRST_NAMES) + ' ' + window.util.getRandomElement(LAST_NAMES);
-      wizard.coatColor = window.util.getRandomElement(COAT_COLORS);
-      wizard.eyesColor = window.util.getRandomElement(EYES_COLORS);
+      wizard.name = FIRST_NAMES[window.util.getRandom(0, FIRST_NAMES.length)] + ' '
+      + LAST_NAMES[window.util.getRandom(0, LAST_NAMES.length)];
+      wizard.coatColor = COAT_COLORS[window.util.getRandom(0, COAT_COLORS.length)];
+      wizard.eyesColor = EYES_COLORS[window.util.getRandom(0, EYES_COLORS.length)];
       wizardArr[i] = wizard;
     }
     return wizardArr;
@@ -49,7 +50,7 @@
   document.querySelector('.setup-similar').classList.remove('hidden');
 
   function changeWizardElementColor(wizardElemClass, arr) {
-    wizardElemClass.style.fill = window.util.getRandomElement(arr);
+    wizardElemClass.style.fill = arr[window.util.getRandom(0, arr.length)];
   }
 
   wizardCoat.addEventListener('click', function () {
@@ -61,7 +62,7 @@
   });
 
   fireBall.addEventListener('click', function () {
-    fireBall.style.background = window.util.getRandomElement(FIREBALL_COLORS);
+    fireBall.style.background = FIREBALL_COLORS[window.util.getRandom(0, FIREBALL_COLORS.length)];
   });
 
 })();
