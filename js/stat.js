@@ -9,7 +9,7 @@
 
     var histogramHeight = 150;
     var step = histogramHeight / (window.util.getMax(times) - 0);
-    var InitialY = 240;
+    var initialY = 240;
     var initialX = 130;
     var indent = 50;
     var barWidth = 40;
@@ -17,13 +17,12 @@
 
     for (var i = 0; i < times.length; i++) {
       var barColor = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : getRandomColorString();
-
       drawBar(ctx, initialX + indent * i + barWidth * i,
-          InitialY - (times[i] * step), barWidth, times[i] * step,
+          initialY - (times[i] * step), barWidth, times[i] * step,
           barColor);
       fillText(ctx, Math.round(times[i]), initialX + indent * i + barWidth * i,
-          InitialY - (times[i] * step) - lineHeight, '#000', '16px', 'PT Mono');
-      fillText(ctx, names[i], initialX + indent * i + barWidth * i, InitialY + lineHeight * 2,
+          initialY - (times[i] * step) - lineHeight, '#000', '16px', 'PT Mono');
+      fillText(ctx, names[i], initialX + indent * i + barWidth * i, initialY + lineHeight * 2,
           '#000', '16px', 'PT Mono');
     }
 
